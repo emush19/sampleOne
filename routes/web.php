@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/me', function () {
+    return view('home');
+});
+
+Route::resource('accounts','AccountController');
+Route::delete('/accounts/{account}', 'AccountController@destroy');  
