@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -14,7 +15,12 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = Account::all();
+        // $accounts = Account::all();
+        $accounts = DB::table('accounts')
+        ->select('*')
+        ->where('deleted', 0)
+        ->get(); // you were missing the get method
+
         return view('accounts.index', compact('accounts',$accounts));
     }
 
@@ -72,7 +78,7 @@ class AccountController extends Controller
     {
         $request->validate([
 
-        ])
+        ]);
     }
 
     /**

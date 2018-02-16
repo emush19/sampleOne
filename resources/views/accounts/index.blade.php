@@ -1,4 +1,7 @@
 @extends('template.master')
+@section('title')
+Account Main Panel
+@stop
 @section('content')
 
 @if(Session::has('message'))
